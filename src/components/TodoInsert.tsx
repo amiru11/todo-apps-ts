@@ -29,7 +29,7 @@ function TodoInsert({ onInsert }): JSX.Element {
   };
 
   const onSubmit = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
+    (event: React.FormEvent<HTMLFormElement>): void => {
       onInsert(value);
       reset();
       event.preventDefault();
@@ -38,7 +38,7 @@ function TodoInsert({ onInsert }): JSX.Element {
   );
 
   return (
-    <form className="TodoInsert">
+    <form className="TodoInsert" onSubmit={onSubmit}>
       <input
         type="text"
         placeholder="할 일을 입력하세요"
@@ -46,7 +46,7 @@ function TodoInsert({ onInsert }): JSX.Element {
         name="value"
         value={value}
       />
-      <button onClick={onSubmit}>
+      <button type="submit">
         <MdAdd />
       </button>
     </form>
