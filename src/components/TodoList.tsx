@@ -1,12 +1,16 @@
 import React from "react";
-import TodoListItem from "./TodoListItem";
+import TodoListItem, { ITodo } from "./TodoListItem";
 
-function TodoList(): JSX.Element {
+export interface ITodos {
+  todos: ITodo[];
+}
+
+function TodoList({ todos }: ITodos): JSX.Element {
   return (
     <div className="TodoList">
-      <TodoListItem />
-      <TodoListItem />
-      <TodoListItem />
+      {todos.map(todo => (
+        <TodoListItem key={todo.id} todo={todo} />
+      ))}
     </div>
   );
 }
