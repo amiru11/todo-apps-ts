@@ -6,24 +6,35 @@ type StateType = {
 };
 
 function inputReducer(state: StateType, action) {
-  console.log("state", state);
   return {
     ...state,
     [action.name]: action.value
   };
 }
 
-function TodoInsert(): JSX.Element {
+function TodoInsert({ onInsert }): JSX.Element {
   const [state, dispatch] = useReducer(inputReducer, {
     value: ""
   });
 
-  //
   const { value } = state;
 
   const handleChange = useCallback(
     ({ target }: React.ChangeEvent<HTMLInputElement>): void => dispatch(target),
     []
+  );
+
+  const reset = (): void => {
+    dispatch({ value: "" });
+  };
+
+  const onSubmit = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
+      onInsert(value);
+      reset();
+      event.preventDefault();
+    },
+    [onInsert, value]
   );
 
   return (
@@ -35,7 +46,7 @@ function TodoInsert(): JSX.Element {
         name="value"
         value={value}
       />
-      <button type="submit">
+      <button onClick={onSubmit}>
         <MdAdd />
       </button>
     </form>

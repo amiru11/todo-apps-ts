@@ -1,8 +1,8 @@
 import React from "react";
-import TodoListItem, { Itodo } from "./TodoListItem";
+import TodoListItem, { ITodo } from "./TodoListItem";
 
-interface ITodos {
-  todos: Itodo[];
+export interface ITodos {
+  todos: ITodo[];
 }
 
 function TodoList({ todos }: ITodos): JSX.Element {
