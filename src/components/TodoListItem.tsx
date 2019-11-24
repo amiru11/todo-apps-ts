@@ -1,16 +1,28 @@
 import React from "react";
 import {
   MdCheckBoxOutlineBlank,
-  // MdCheckBox,
+  MdCheckBox,
   MdRemoveCircleOutline
 } from "react-icons/md";
 
-function TodoListItem(): JSX.Element {
+interface ItodoProps {
+  key: number;
+  todo: Itodo;
+}
+
+export interface Itodo {
+  id: number;
+  value: string;
+  checked: boolean;
+}
+
+function TodoListItem({ key, todo }: ItodoProps): JSX.Element {
+  const { value, checked } = todo;
   return (
-    <div>
+    <div key={key}>
       <div className="checkbox">
-        <MdCheckBoxOutlineBlank />
-        <div className="text">할 일</div>
+        {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
+        <div className="text">{value}</div>
       </div>
       <div className="remove">
         <MdRemoveCircleOutline />

@@ -4,13 +4,15 @@ import TodoMain from "./components/TodoMain";
 import TodoInsert from "./components/TodoInsert";
 import TodoList from "./components/TodoList";
 
+import { todos } from "./data/todo";
+
 import "./App.css";
 
 const App: React.FC = () => {
   return (
     <TodoMain>
       <TodoInsert />
-      <TodoList />
+      <TodoList todos={todos} />
     </TodoMain>
   );
 };
