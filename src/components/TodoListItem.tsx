@@ -16,10 +16,10 @@ export interface Itodo {
   checked: boolean;
 }
 
-function TodoListItem({ key, todo }: ItodoProps): JSX.Element {
+function TodoListItem({ todo }: ItodoProps): JSX.Element {
   const { value, checked } = todo;
   return (
-    <div key={key}>
+    <div>
       <div className="checkbox">
         {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
         <div className="text">{value}</div>
