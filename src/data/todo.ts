@@ -1,4 +1,4 @@
-export const todos = [
+export const initTodos = [
   {
     id: 1,
     value: "test1",
