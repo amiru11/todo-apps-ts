@@ -6,8 +6,8 @@ import {
 } from "react-icons/md";
 
 interface ITodoProps {
-  key: number;
   todo: ITodo;
+  onRemove: (id: number) => void;
 }
 
 export interface ITodo {
@@ -16,15 +16,15 @@ export interface ITodo {
   checked: boolean;
 }
 
-function TodoListItem({ todo }: ITodoProps): JSX.Element {
-  const { value, checked } = todo;
+function TodoListItem({ todo, onRemove }: ITodoProps): JSX.Element {
+  const { id, value, checked } = todo;
   return (
     <div>
       <div className="checkbox">
         {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
         <div className="text">{value}</div>
       </div>
-      <div className="remove">
+      <div className="remove" onClick={() => onRemove(id)}>
         <MdRemoveCircleOutline />
       </div>
     </div>

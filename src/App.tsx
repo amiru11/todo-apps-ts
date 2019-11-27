@@ -29,10 +29,18 @@ const App: React.FC = () => {
     [todos]
   );
 
+  const onRemove = useCallback(
+    (id: number): void => {
+      const filteredTodos: ITodo[] = todos.filter(todo => todo.id !== id);
+      setTodos(filteredTodos);
+    },
+    [todos]
+  );
+
   return (
     <TodoMain>
       <TodoInsert onInsert={onInsert} />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} onRemove={onRemove} />
     </TodoMain>
   );
 };
