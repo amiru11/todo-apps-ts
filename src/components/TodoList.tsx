@@ -3,7 +3,7 @@ import TodoListItem, { ITodo } from "./TodoListItem";
 
 export interface ITodos {
   todos: ITodo[];
-  onRemove: (number) => void;
+  onRemove: (id: number) => void;
 }
 
 function TodoList({ todos, onRemove }: ITodos): JSX.Element {

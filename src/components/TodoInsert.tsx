@@ -1,18 +1,22 @@
 import React, { useReducer, useCallback } from "react";
 import { MdAdd } from "react-icons/md";
 
-type StateType = {
+interface ITodoInsertProps {
+  onInsert: (value: string) => void;
+}
+
+type stateType = {
   value: string;
 };
 
-function inputReducer(state: StateType, action) {
+function inputReducer(state: stateType, action) {
   return {
     ...state,
     [action.name]: action.value
   };
 }
 
-function TodoInsert({ onInsert }: any): JSX.Element {
+function TodoInsert({ onInsert }: ITodoInsertProps): JSX.Element {
   const [state, dispatch] = useReducer(inputReducer, {
     value: ""
   });

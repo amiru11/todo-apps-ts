@@ -7,7 +7,7 @@ import {
 
 interface ITodoProps {
   todo: ITodo;
-  onRemove: (number) => void;
+  onRemove: (id: number) => void;
 }
 
 export interface ITodo {
