@@ -12,7 +12,7 @@ function inputReducer(state: StateType, action) {
   };
 }
 
-function TodoInsert({ onInsert }): JSX.Element {
+function TodoInsert({ onInsert }: any): JSX.Element {
   const [state, dispatch] = useReducer(inputReducer, {
     value: ""
   });
