@@ -1,4 +1,5 @@
 import React from "react";
+import { MainWrap, MainTitle, MainContent } from "../styles/TodoMain";
 
 interface IChildren {
   children: JSX.Element[];
@@ -6,10 +7,10 @@ interface IChildren {
 
 function Main({ children }: IChildren): JSX.Element {
   return (
-    <div className="mainTemplate">
-      <div className="app-title">일정 관리</div>
-      <div className="content">{children}</div>
-    </div>
+    <MainWrap>
+      <MainTitle>일정 관리</MainTitle>
+      <MainContent>{children}</MainContent>
+    </MainWrap>
   );
 }
 
