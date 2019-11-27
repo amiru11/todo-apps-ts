@@ -1,5 +1,6 @@
 import React from "react";
 import TodoListItem, { ITodo } from "./TodoListItem";
+import { ListWrap } from "../styles/TodoList";
 
 export interface ITodos {
   todos: ITodo[];
@@ -8,11 +9,11 @@ export interface ITodos {
 
 function TodoList({ todos, onRemove }: ITodos): JSX.Element {
   return (
-    <div className="TodoList">
+    <ListWrap>
       {todos.map(todo => (
         <TodoListItem key={todo.id} todo={todo} onRemove={onRemove} />
       ))}
-    </div>
+    </ListWrap>
   );
 }
 
