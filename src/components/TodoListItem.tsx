@@ -14,15 +14,15 @@ interface ITodoProps {
   onRemove: (id: number) => void;
 }
 
-function TodoListItem({ todo, onRemove }: ITodoProps): JSX.Element {
-  const { id, value, checked } = todo;
+function TodoListItem({ ...props }: ITodoProps): JSX.Element {
+  const { id, value, checked } = props.todo;
   return (
     <ItemWrap>
       <Checkbox>
         {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
         <div className="text">{value}</div>
       </Checkbox>
-      <div className="remove" onClick={() => onRemove(id)}>
+      <div className="remove" onClick={() => props.onRemove(id)}>
         <MdRemoveCircleOutline />
       </div>
     </ItemWrap>
