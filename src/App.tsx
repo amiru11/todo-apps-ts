@@ -3,7 +3,7 @@ import React, { useState, useCallback, useRef } from "react";
 import TodoMain from "./components/TodoMain";
 import TodoInsert from "./components/TodoInsert";
 import TodoList from "./components/TodoList";
-import { ITodo } from "./components/TodoListItem";
+import { ITodo } from "./interfaces/common";
 
 import { initTodos } from "./data/todo";
 

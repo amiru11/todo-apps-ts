@@ -5,17 +5,13 @@ import {
   MdRemoveCircleOutline
 } from "react-icons/md";
 
+import { ITodo } from "../interfaces/common";
+
 import { ItemWrap, Checkbox } from "../styles/TodoListItem";
 
 interface ITodoProps {
   todo: ITodo;
   onRemove: (id: number) => void;
-}
-
-export interface ITodo {
-  id: number;
-  value: string;
-  checked: boolean;
 }
 
 function TodoListItem({ todo, onRemove }: ITodoProps): JSX.Element {
