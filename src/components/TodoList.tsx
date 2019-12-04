@@ -8,7 +8,12 @@ function TodoList({ ...props }: ITodos): JSX.Element {
   return (
     <ListWrap>
       {props.todos.map(todo => (
-        <TodoListItem key={todo.id} todo={todo} onRemove={props.onRemove} />
+        <TodoListItem
+          key={todo.id}
+          todo={todo}
+          onRemove={props.onRemove}
+          onToggle={props.onToggle}
+        />
       ))}
     </ListWrap>
   );

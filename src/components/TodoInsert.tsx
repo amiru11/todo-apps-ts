@@ -1,4 +1,4 @@
-import React, { useReducer, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { MdAdd } from "react-icons/md";
 import { InsertForm, InsertInput, InsertButton } from "../styles/TodoInsert";
 
@@ -6,37 +6,19 @@ interface ITodoInsertProps {
   onInsert: (value: string) => void;
 }
 
-type stateType = {
-  value: string;
-};
-
-function inputReducer(state: stateType, action) {
-  return {
-    ...state,
-    [action.name]: action.value
-  };
-}
-
 function TodoInsert({ onInsert }: ITodoInsertProps): JSX.Element {
-  const [state, dispatch] = useReducer(inputReducer, {
-    value: ""
-  });
-
-  const { value } = state;
+  const [value, setValue] = useState<string>("");
 
   const handleChange = useCallback(
-    ({ target }: React.ChangeEvent<HTMLInputElement>): void => dispatch(target),
+    ({ target }: React.ChangeEvent<HTMLInputElement>): void =>
+      setValue(target.value),
     []
   );
-
-  const reset = (): void => {
-    dispatch({ value: "" });
-  };
 
   const onSubmit = useCallback(
     (event: React.FormEvent<HTMLFormElement>): void => {
       onInsert(value);
-      reset();
+      setValue("");
       event.preventDefault();
     },
     [onInsert, value]

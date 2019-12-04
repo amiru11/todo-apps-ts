@@ -36,11 +36,18 @@ const App: React.FC = () => {
     },
     [todos]
   );
+  const onToggle = useCallback((id: number): void => {
+    setTodos(todos =>
+      todos.map(todo =>
+        todo.id === id ? { ...todo, checked: !todo.checked } : todo
+      )
+    );
+  }, []);
 
   return (
     <TodoMain>
       <TodoInsert onInsert={onInsert} />
-      <TodoList todos={todos} onRemove={onRemove} />
+      <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
     </TodoMain>
   );
 };
